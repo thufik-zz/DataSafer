@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'AF0F51E63B89AC03EF02B9FCAEE28FF3'
+               BlueprintIdentifier = 'F5196D5A706AB70D152AD86EF48411CA'
                BlueprintName = 'VBPieChart'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'VBPieChart.framework'>

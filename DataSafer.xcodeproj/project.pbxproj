@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		283227EBD06B32EB8AD99C44 /* Pods_DataSafer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38272591045EEB875A056EA3 /* Pods_DataSafer.framework */; };
 		B50BC8A11DBBB361007798E0 /* GetUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50BC8A01DBBB361007798E0 /* GetUser.swift */; };
+		B58EE9ED1DD77902006F6CF5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58EE9EC1DD77902006F6CF5 /* SettingsViewController.swift */; };
+		B58EE9EF1DD77B40006F6CF5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58EE9EE1DD77B40006F6CF5 /* User.swift */; };
 		B5AD40091D8439CF002B3F27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AD40081D8439CF002B3F27 /* AppDelegate.swift */; };
 		B5AD400E1D8439CF002B3F27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AD400C1D8439CF002B3F27 /* Main.storyboard */; };
 		B5AD40101D8439CF002B3F27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5AD400F1D8439CF002B3F27 /* Assets.xcassets */; };
@@ -26,6 +28,8 @@
 		38272591045EEB875A056EA3 /* Pods_DataSafer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataSafer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90EB99C0715F43A4354C1647 /* Pods-DataSafer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataSafer.release.xcconfig"; path = "Pods/Target Support Files/Pods-DataSafer/Pods-DataSafer.release.xcconfig"; sourceTree = "<group>"; };
 		B50BC8A01DBBB361007798E0 /* GetUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUser.swift; sourceTree = "<group>"; };
+		B58EE9EC1DD77902006F6CF5 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B58EE9EE1DD77B40006F6CF5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B5AD40051D8439CF002B3F27 /* DataSafer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataSafer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5AD40081D8439CF002B3F27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5AD400D1D8439CF002B3F27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				B5F397241DC4E11C00254AB8 /* Host.swift */,
+				B58EE9EE1DD77B40006F6CF5 /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 				B5AD401E1D844DBF002B3F27 /* BackupViewController.swift */,
 				B5AD401A1D843D41002B3F27 /* LoginViewController.swift */,
 				B5FC43711D9FF54800B63CCF /* GraphViewController.swift */,
+				B58EE9EC1DD77902006F6CF5 /* SettingsViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -282,6 +288,8 @@
 				B5AD401F1D844DBF002B3F27 /* BackupViewController.swift in Sources */,
 				B5F397271DC5023400254AB8 /* GetHost.swift in Sources */,
 				B5FC436F1D9FE71800B63CCF /* HostTableViewCell.swift in Sources */,
+				B58EE9EF1DD77B40006F6CF5 /* User.swift in Sources */,
+				B58EE9ED1DD77902006F6CF5 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

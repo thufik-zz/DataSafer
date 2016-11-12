@@ -3,6 +3,8 @@ PODS:
   - AlamofireObjectMapper (3.0.2):
     - Alamofire (~> 3.2)
     - ObjectMapper (~> 1.0)
+  - ALLoadingView (0.1.4)
+  - FCAlertView (1.2.5)
   - IQKeyboardManagerSwift (4.0.5)
   - ObjectMapper (1.5.0)
   - SWRevealViewController (2.3.0)
@@ -11,6 +13,8 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 3.5)
   - AlamofireObjectMapper (= 3.0.2)
+  - ALLoadingView (= 0.1.4)
+  - FCAlertView
   - IQKeyboardManagerSwift (= 4.0.5)
   - SWRevealViewController
   - VBPieChart
@@ -18,11 +22,13 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
   AlamofireObjectMapper: 70f97cbf45c01c48d26aa07a1a7059a60ed7411d
+  ALLoadingView: dace8e393aba6d9c51440f28f137550b42c6e100
+  FCAlertView: 7c6ed3587b6e819b8efc268998fb1fbb3eabcd0e
   IQKeyboardManagerSwift: 41fd3a45a2cdb2a0e031af697708a95b865068a1
   ObjectMapper: 386645adca9d9d23b95eda43090b09d66444cf14
   SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
   VBPieChart: 7d46553bcb9de13afee366acb84d3afcda536929
 
-PODFILE CHECKSUM: 7a8f8a3c93d963f0f38f4fcdd305c7e9a426cb0e
+PODFILE CHECKSUM: 38cdc9a6d128fb876538f412f63cfd3c1045af5a
 
 COCOAPODS: 1.2.0.beta.1

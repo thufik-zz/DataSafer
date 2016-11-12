@@ -4,12 +4,27 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ALLoadingView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>AlamofireObjectMapper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FCAlertView-FCAlertView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FCAlertView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,12 +57,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2DF6F1AC1DE2F8017384C3C82035E669</key>
+		<key>1613271357771814C71601D90B787D94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>2F5622F3B18DF497981AB58C6D1FC72F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>35C149B1BDA5B53C84B89A37BF2F6CCB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,12 +87,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AF0F51E63B89AC03EF02B9FCAEE28FF3</key>
+		<key>DE98A985231BFE450C36C4E29C9D59F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DAF9C07884088F6C317BA08199F69AC6</key>
+		<key>E33DD7AEB7842B684CA3E3882BA88154</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EF1ABE20DAA23760FBF0359740C1F0B9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F5196D5A706AB70D152AD86EF48411CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

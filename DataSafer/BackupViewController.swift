@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import AlamofireObjectMapper
-//import ALLoadingView
+import ALLoadingView
 
 
 
@@ -27,49 +27,21 @@ class BackupViewController: UIViewController,UITableViewDelegate,UITableViewData
        
         self.table.registerNib(UINib(nibName: "HostTableViewCell",bundle: nil), forCellReuseIdentifier: "hostCell")
         
-        let url = NSMutableURLRequest(URL: NSURL(string: "http://giovannic.ddns.net:7070/Datasafer/gerenciamento/usuario/estacoes")!)
+        //let url = NSMutableURLRequest(URL: NSURL(string: "http://giovannic.ddns.net:7070/Datasafer/gerenciamento/usuario/estacoes")!)
         
-        //let url = NSMutableURLRequest(url: URL(string: "http://giovannic.ddns.net:7070/Datasafer/gerenciamento/usuario/estacoes")!)
-        
-        let header = ["Authorization" : AppDelegate.token.token]
-        
-        //print("token = \(AppDelegate.token.token)")
-        
-        //ALLoadingView.manager.blurredBackground = true
-        
-        //let loadingview = ALLoadingView()
-        //loadingview.showLoadingViewOfType(.Default, windowMode: .fullscreen)
-        //loadingview.showLoadingViewOfType(.Default, windowMode: .Fullscreen)
-        
-       
-        
-        //Alamofire.request(url, method:.get, parameters: nil, encoding: .json, headers: header).
+        let url = NSMutableURLRequest(URL: NSURL(string: "http://192.168.2.54/Datasafer/gerenciamento/usuario/estacoes")!)
         
         
-        //let url = "http://giovannic.ddns.net:7070/Datasafer/gerenciamento/usuario/estacoes"
+        let header = ["Authorization" : AppDelegate.token.token, "content-type" : "application/json"]
         
-//        Alamofire.request(.GET,url).responseArray({ (response : Response< [Host],NSError>) in
-//            
-//            self.hostsArray = NSMutableArray()
-//            
-//            if let hosts = response.result.value
-//            {
-//                for host in hosts
-//                {
-//                    self.hostsArray?.addObject(host)
-//                }
-//            }
-//            
-//            loadingview.hideLoadingView()
-//            self.load = true
-//            self.table.reloadData()
-//            
-//            
-//        })
-//        
+        let loadingview = ALLoadingView()
+        loadingview.showLoadingViewOfType(.Default, windowMode: .Fullscreen)
+        
         
         Alamofire.request(.GET, url, parameters: nil, encoding: .JSON, headers: header).responseArray(completionHandler: { (response: Response<[Host],NSError>) in
         
+            
+            
             self.hostsArray = NSMutableArray()
             
             if let hosts = response.result.value
@@ -80,31 +52,11 @@ class BackupViewController: UIViewController,UITableViewDelegate,UITableViewData
                 }
             }
             
-            //loadingview.hideLoadingView()
+            loadingview.hideLoadingView()
             self.load = true
             self.table.reloadData()
         
         })
-        
-//        Alamofire.request(.GET, url, parameters: nil, encoding: .json, headers: header).responseArray({ (response : Response< [Host],NSError>) in
-//            
-//            self.hostsArray = NSMutableArray()
-//            
-//            if let hosts = response.result.value
-//            {
-//                for host in hosts
-//                {
-//                    self.hostsArray?.addObject(host)
-//                }
-//            }
-//            
-//            loadingview.hideLoadingView()
-//            self.load = true
-//            self.table.reloadData()
-//            
-//            
-//        })
-        
         
         // Do any additional setup after loading the view.
     }
@@ -139,15 +91,8 @@ class BackupViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         let cell = tableView.dequeueReusableCellWithIdentifier("hostCell") as! HostTableViewCell
         
-        
-        
-        //cell.backupStatus.text = "Status"
-        //cell.hostIP.text = "Host IP"
         cell.hostName.text = (hostsArray![indexPath.row] as! Host).nome
         
-        
-        //        cell.accessoryType = .DisclosureIndicator
-        //       cell.textLabel?.text = "Máquina \(indexPath.row)"
         return cell
     }
     
