@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (3.5.1)
+  - AlamofireObjectMapper (3.0.2):
+    - Alamofire (~> 3.2)
+    - ObjectMapper (~> 1.0)
+  - IQKeyboardManagerSwift (4.0.5)
+  - ObjectMapper (1.5.0)
+  - SWRevealViewController (2.3.0)
+  - VBPieChart (1.2.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.5)
+  - AlamofireObjectMapper (= 3.0.2)
+  - IQKeyboardManagerSwift (= 4.0.5)
+  - SWRevealViewController
+  - VBPieChart
+
+SPEC CHECKSUMS:
+  Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
+  AlamofireObjectMapper: 70f97cbf45c01c48d26aa07a1a7059a60ed7411d
+  IQKeyboardManagerSwift: 41fd3a45a2cdb2a0e031af697708a95b865068a1
+  ObjectMapper: 386645adca9d9d23b95eda43090b09d66444cf14
+  SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
+  VBPieChart: 7d46553bcb9de13afee366acb84d3afcda536929
+
+PODFILE CHECKSUM: 7a8f8a3c93d963f0f38f4fcdd305c7e9a426cb0e
+
+COCOAPODS: 1.2.0.beta.1

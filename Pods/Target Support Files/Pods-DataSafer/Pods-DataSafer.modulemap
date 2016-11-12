@@ -1,0 +1,6 @@
+framework module Pods_DataSafer {
+  umbrella header "Pods-DataSafer-umbrella.h"
+
+  export *
+  module * { export * }
+}
