@@ -11,61 +11,20 @@ import VBPieChart
 
 class GraphViewController: UIViewController {
 
+    
+    @IBOutlet weak var lblExecutado: UILabel!
+    @IBOutlet weak var lblFalha: UILabel!
+    @IBOutlet weak var lblAgendado: UILabel!
+    @IBOutlet weak var lblExecutando: UILabel!
+    @IBOutlet weak var lblRestaurando: UILabel!
+    @IBOutlet weak var lblRestaurado: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       
-        let dictionarie = [
-            [
-                "name" : "Sucesso",
-                "value" : 200,
-                "color" : UIColor.darkGrayColor()//UIColor.init(red: 0, green: 255, blue: 127, alpha: 1.0)
-                //"strokeColor" : UIColor.init(red: 2550.0, green: 255.0, blue: 255.0, alpha: 1.0)
-            ],
-            [
-                "name" : "Falha",
-                "value" : 70,
-                "color" : UIColor.blueColor()//UIColor.init(red: 255, green: 48, blue: 48, alpha: 1.0)
-            ],
-            [
-                "name" : "Agendado",
-                "value" : 50,
-                "color" : UIColor.brownColor()//UIColor.init(red: 30, green: 144, blue: 255, alpha: 1.0)
-            ],
-            [
-                "name" : "Executando",
-                "value" : 100,
-                "color" : UIColor.cyanColor()//UIColor.init(red: 30, green: 144, blue: 255, alpha: 1.0)
-            ],
-            [
-                "name" : "Excluído",
-                "value" : 30,
-                "color" : UIColor.greenColor()//UIColor.init(red: 34, green: 139, blue: 34, alpha: 1.0)
-            ]
-        ]
- 
-    
         
-        let vbpiechart = VBPieChart(frame: CGRect(x: 30, y: 100, width: 250, height: 250))
-        
-        
-        
-        
-        self.view.addSubview(vbpiechart)
-        
-        //vbpiechart.enableStrokeColor = true;
-        vbpiechart.holeRadiusPrecent = 0.3
-        ///vbpiechart.seten
-        
-        //vbpiechart.setChartValues(dictionarie, animation: true,options: .growthBack)
-        
-        vbpiechart.setChartValues(dictionarie, animation: true)
-        
-        
-        //VBPieChart.setAnimationsEnabled(true)
-        
-        
-        
-
+        self.ConfigLabels()
+        self.configGraph()
         // Do any additional setup after loading the view.
     }
 
@@ -74,12 +33,59 @@ class GraphViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func ConfigLabels()
+    {
+        lblExecutado.backgroundColor = Cores.executado
+        lblExecutando.backgroundColor = Cores.executando
+        lblAgendado.backgroundColor = Cores.agendado
+        lblFalha.backgroundColor = Cores.falha
+        lblRestaurado.backgroundColor = Cores.restaurado
+        lblRestaurando.backgroundColor = Cores.restaurando
+    }
     
+    func configGraph()
+    {
+        let dictionarie = [
+            [
+                "name" : "Executado",
+                "value" : 200,
+                "color" : Cores.executado
+            ],
+            [
+                "name" : "Falha",
+                "value" : 70,
+                "color" : Cores.falha
+            ],
+            [
+                "name" : "Agendado",
+                "value" : 50,
+                "color" : Cores.agendado
+            ],
+            [
+                "name" : "Executando",
+                "value" : 100,
+                "color" : Cores.executando
+            ],
+            [
+                "name" : "Restaurado",
+                "value" : 30,
+                "color" : Cores.restaurado
+            ],
+            [
+                "name" : "Restaurando",
+                "value" : 30,
+                "color" : Cores.restaurando
+            ]
+        ]
+        
+        let vbpiechart = VBPieChart(frame: CGRect(x: 30, y: 100, width: 250, height: 250))
+        vbpiechart.holeRadiusPrecent = 0.3
+        vbpiechart.setChartValues(dictionarie, animation: false)
+        self.view.addSubview(vbpiechart)
+        
+    }
     
-    
-    
-    
-    
+
 
     /*
     // MARK: - Navigation

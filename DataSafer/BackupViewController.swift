@@ -27,9 +27,8 @@ class BackupViewController: UIViewController,UITableViewDelegate,UITableViewData
        
         self.table.registerNib(UINib(nibName: "HostTableViewCell",bundle: nil), forCellReuseIdentifier: "hostCell")
         
-        //let url = NSMutableURLRequest(URL: NSURL(string: "http://giovannic.ddns.net:7070/Datasafer/gerenciamento/usuario/estacoes")!)
         
-        let url = NSMutableURLRequest(URL: NSURL(string: "http://192.168.2.54/Datasafer/gerenciamento/usuario/estacoes")!)
+        let url = NSMutableURLRequest(URL: NSURL(string: "http://senai.datasafer.com.br/gerenciamento/usuario/estacoes")!)
         
         
         let header = ["Authorization" : AppDelegate.token.token, "content-type" : "application/json"]
@@ -97,7 +96,15 @@ class BackupViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     
-
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let operationsViewController = storyboard?.instantiateViewControllerWithIdentifier("operationsViewController") as! OperationsViewController
+        operationsViewController.host = hostsArray![indexPath.row] as? Host
+        operationsViewController.hidesBottomBarWhenPushed = true
+        
+        self.navigationController?.pushViewController(operationsViewController, animated: true)
+        
+    }
 
     /*
     // MARK: - Navigation

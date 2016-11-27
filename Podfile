@@ -10,4 +10,7 @@ pod 'AlamofireObjectMapper','3.0.2'
 pod 'SWRevealViewController'
 pod 'FCAlertView'
 pod 'ALLoadingView','0.1.4'
+pod 'OneSignal'
+pod 'MSSimpleGauge'
+pod 'MPGaugeView'
 end

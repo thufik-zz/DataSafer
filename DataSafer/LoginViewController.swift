@@ -19,8 +19,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loginButton.clipsToBounds = true
-        loginButton.layer.cornerRadius = 10
+        
+        
         
         // Do any additional setup after loading the view.
     }
@@ -42,6 +42,13 @@ class LoginViewController: UIViewController {
         //GetUser.Login(txtLogin.text!, pass: txtPass.text!)
         
     
+    }
+    
+    func configLayout()
+    {
+        loginButton.clipsToBounds = true
+        loginButton.layer.cornerRadius = 10
+        loginButton.backgroundColor = Cores.appColor
     }
 
     /*

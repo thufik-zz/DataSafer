@@ -19,7 +19,7 @@ class User: Mappable {
     
     func mapping(map: Map) {
         name <- map["nome"]
-        mail <- map["mail"]
+        mail <- map["email"]
         storage <- map["armazenamento"]
     }
 }

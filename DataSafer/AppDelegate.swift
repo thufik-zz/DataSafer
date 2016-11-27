@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import OneSignal
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,13 +18,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         static var token = ""
     }
     
-
-    func applicationDidFinishLaunching(application: UIApplication) {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+        
         IQKeyboardManager.sharedManager().enable = true
+        OneSignal.initWithLaunchOptions(launchOptions, appId: "52930b86-23de-444d-932e-08a58573327c")
+        UINavigationBar.appearance().barTintColor = Cores.appColor
         
         
-        
+        return true
     }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        print(deviceToken)
+    }
+    
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        print(userInfo.count)
+    }
+    
+    
+    
     
 
     func applicationWillResignActive(application: UIApplication) {

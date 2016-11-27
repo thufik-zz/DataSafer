@@ -14,10 +14,28 @@ import ALLoadingView
 class GetUser: NSObject {
 
     
+    func getUserStats()
+    {
+        
+        let url = NSMutableURLRequest(URL: NSURL(string: "http://senai.datasafer.com.br/Datasafer/gerenciamento/usuario")!)
+        
+        let header = ["token" : AppDelegate.token.token,"content-type" : "application/json"]
+        
+        
+        Alamofire.request(.GET, url, parameters: nil, encoding: .JSON, headers: header).responseObject(completionHandler: { (response: Response<User,NSError> ) in
+            
+            if let responseData = response.result.value
+            {
+                print(responseData.name)
+            }
+            
+        })
+    }
+    
+    
     static func Login(user:String, pass:String){
         
-        //let url = NSMutableURLRequest(URL: NSURL(string: "http://giovannic.ddns.net:7070/Datasafer/gerenciamento/login")!)
-        let url = NSMutableURLRequest(URL: NSURL(string: "http://192.168.2.54/Datasafer/gerenciamento/login")!)
+        let url = NSMutableURLRequest(URL: NSURL(string: "http://senai.datasafer.com.br/gerenciamento/login")!)
         
         
         let parameters = [
@@ -45,14 +63,15 @@ class GetUser: NSObject {
                 if JsonReturn["erro"] != nil
                 {
                     loadingview.hideLoadingView()
+                    alert.makeAlertTypeCaution()
                     alert.showAlertWithTitle("Atenção", withSubtitle: "Usuário ou senha incorretos", withCustomImage: nil, withDoneButtonTitle: "Ok", andButtons: nil)
                 }
                 else
                 {
                     loadingview.hideLoadingView()
                     AppDelegate.token.token = JsonReturn["token"] as! String
+                    print("token = \(AppDelegate.token.token)")
                     
-                    print(AppDelegate.token.token)
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let menu = storyboard.instantiateViewControllerWithIdentifier("menu")
@@ -63,6 +82,7 @@ class GetUser: NSObject {
             else
             {
                 loadingview.hideLoadingView()
+                alert.makeAlertTypeCaution()
                 alert.showAlertWithTitle("Atenção", withSubtitle: "Houve um erro, tente novamente mais tarde", withCustomImage: nil, withDoneButtonTitle: "Ok", andButtons: nil)
             }
         

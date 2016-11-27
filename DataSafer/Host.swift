@@ -42,10 +42,7 @@ class Host: Mappable {
             executando <- map["executando"]
             excluido <- map["excluido"]
             sucesso <- map["sucesso"]
-        }
-        
-        
-        
+        }   
     }
     
 }

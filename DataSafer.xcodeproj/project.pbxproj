@@ -11,6 +11,11 @@
 		B50BC8A11DBBB361007798E0 /* GetUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50BC8A01DBBB361007798E0 /* GetUser.swift */; };
 		B58EE9ED1DD77902006F6CF5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58EE9EC1DD77902006F6CF5 /* SettingsViewController.swift */; };
 		B58EE9EF1DD77B40006F6CF5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58EE9EE1DD77B40006F6CF5 /* User.swift */; };
+		B5962B5A1DE9F4C0006850E2 /* Cores.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5962B591DE9F4C0006850E2 /* Cores.swift */; };
+		B5962B5C1DEA1045006850E2 /* OperationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5962B5B1DEA1045006850E2 /* OperationsViewController.swift */; };
+		B5962B5E1DEA17FB006850E2 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5962B5D1DEA17FB006850E2 /* Operation.swift */; };
+		B5962B611DEA5A08006850E2 /* OperationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5962B5F1DEA5A08006850E2 /* OperationTableViewCell.swift */; };
+		B5962B621DEA5A08006850E2 /* OperationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5962B601DEA5A08006850E2 /* OperationTableViewCell.xib */; };
 		B5AD40091D8439CF002B3F27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AD40081D8439CF002B3F27 /* AppDelegate.swift */; };
 		B5AD400E1D8439CF002B3F27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AD400C1D8439CF002B3F27 /* Main.storyboard */; };
 		B5AD40101D8439CF002B3F27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5AD400F1D8439CF002B3F27 /* Assets.xcassets */; };
@@ -30,6 +35,12 @@
 		B50BC8A01DBBB361007798E0 /* GetUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUser.swift; sourceTree = "<group>"; };
 		B58EE9EC1DD77902006F6CF5 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B58EE9EE1DD77B40006F6CF5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B58EE9F01DD7A16E006F6CF5 /* DataSafer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DataSafer.entitlements; sourceTree = "<group>"; };
+		B5962B591DE9F4C0006850E2 /* Cores.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cores.swift; sourceTree = "<group>"; };
+		B5962B5B1DEA1045006850E2 /* OperationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationsViewController.swift; sourceTree = "<group>"; };
+		B5962B5D1DEA17FB006850E2 /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		B5962B5F1DEA5A08006850E2 /* OperationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationTableViewCell.swift; sourceTree = "<group>"; };
+		B5962B601DEA5A08006850E2 /* OperationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OperationTableViewCell.xib; sourceTree = "<group>"; };
 		B5AD40051D8439CF002B3F27 /* DataSafer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataSafer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5AD40081D8439CF002B3F27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5AD400D1D8439CF002B3F27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,6 +99,8 @@
 			children = (
 				B5FC436D1D9FE71800B63CCF /* HostTableViewCell.swift */,
 				B5FC436E1D9FE71800B63CCF /* HostTableViewCell.xib */,
+				B5962B5F1DEA5A08006850E2 /* OperationTableViewCell.swift */,
+				B5962B601DEA5A08006850E2 /* OperationTableViewCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -107,6 +120,7 @@
 			children = (
 				B5F397241DC4E11C00254AB8 /* Host.swift */,
 				B58EE9EE1DD77B40006F6CF5 /* User.swift */,
+				B5962B5D1DEA17FB006850E2 /* Operation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -118,8 +132,17 @@
 				B5AD401A1D843D41002B3F27 /* LoginViewController.swift */,
 				B5FC43711D9FF54800B63CCF /* GraphViewController.swift */,
 				B58EE9EC1DD77902006F6CF5 /* SettingsViewController.swift */,
+				B5962B5B1DEA1045006850E2 /* OperationsViewController.swift */,
 			);
 			name = ViewController;
+			sourceTree = "<group>";
+		};
+		B5962B581DE9F48B006850E2 /* Aparência */ = {
+			isa = PBXGroup;
+			children = (
+				B5962B591DE9F4C0006850E2 /* Cores.swift */,
+			);
+			name = "Aparência";
 			sourceTree = "<group>";
 		};
 		B5AD3FFC1D8439CF002B3F27 = {
@@ -143,6 +166,8 @@
 		B5AD40071D8439CF002B3F27 /* DataSafer */ = {
 			isa = PBXGroup;
 			children = (
+				B58EE9F01DD7A16E006F6CF5 /* DataSafer.entitlements */,
+				B5962B581DE9F48B006850E2 /* Aparência */,
 				B50BC8A21DBBD782007798E0 /* Model */,
 				B50BC89F1DBBA8B6007798E0 /* HTTPRequest */,
 				B50BC89D1DBBA85A007798E0 /* AppDelegate */,
@@ -191,7 +216,16 @@
 				TargetAttributes = {
 					B5AD40041D8439CF002B3F27 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 39DFKFCGKD;
 						LastSwiftMigration = 0810;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -218,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5962B621DEA5A08006850E2 /* OperationTableViewCell.xib in Resources */,
 				B5AD40131D8439CF002B3F27 /* LaunchScreen.storyboard in Resources */,
 				B5AD40101D8439CF002B3F27 /* Assets.xcassets in Resources */,
 				B5AD400E1D8439CF002B3F27 /* Main.storyboard in Resources */,
@@ -280,14 +315,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5962B5C1DEA1045006850E2 /* OperationsViewController.swift in Sources */,
 				B5AD401B1D843D41002B3F27 /* LoginViewController.swift in Sources */,
 				B5FC43721D9FF54800B63CCF /* GraphViewController.swift in Sources */,
+				B5962B611DEA5A08006850E2 /* OperationTableViewCell.swift in Sources */,
 				B5F397251DC4E11C00254AB8 /* Host.swift in Sources */,
+				B5962B5A1DE9F4C0006850E2 /* Cores.swift in Sources */,
 				B5AD40091D8439CF002B3F27 /* AppDelegate.swift in Sources */,
 				B50BC8A11DBBB361007798E0 /* GetUser.swift in Sources */,
 				B5AD401F1D844DBF002B3F27 /* BackupViewController.swift in Sources */,
 				B5F397271DC5023400254AB8 /* GetHost.swift in Sources */,
 				B5FC436F1D9FE71800B63CCF /* HostTableViewCell.swift in Sources */,
+				B5962B5E1DEA17FB006850E2 /* Operation.swift in Sources */,
 				B58EE9EF1DD77B40006F6CF5 /* User.swift in Sources */,
 				B58EE9ED1DD77902006F6CF5 /* SettingsViewController.swift in Sources */,
 			);
@@ -409,6 +448,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DataSafer/DataSafer.entitlements;
+				DEVELOPMENT_TEAM = 39DFKFCGKD;
 				INFOPLIST_FILE = DataSafer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mackenzie.DataSafer;
@@ -423,6 +464,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DataSafer/DataSafer.entitlements;
+				DEVELOPMENT_TEAM = 39DFKFCGKD;
 				INFOPLIST_FILE = DataSafer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mackenzie.DataSafer;
