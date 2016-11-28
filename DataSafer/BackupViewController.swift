@@ -10,52 +10,21 @@ import UIKit
 import Alamofire
 import AlamofireObjectMapper
 import ALLoadingView
+import FCAlertView
 
 
 
 class BackupViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var table: UITableView!
-    var hostsArray: NSMutableArray?
+    var hostsArray: [Host]?
     
-    var load = false;
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
-        self.table.registerNib(UINib(nibName: "HostTableViewCell",bundle: nil), forCellReuseIdentifier: "hostCell")
-        
-        
-        let url = NSMutableURLRequest(URL: NSURL(string: "http://senai.datasafer.com.br/gerenciamento/usuario/estacoes")!)
-        
-        
-        let header = ["Authorization" : AppDelegate.token.token, "content-type" : "application/json"]
-        
-        let loadingview = ALLoadingView()
-        loadingview.showLoadingViewOfType(.Default, windowMode: .Fullscreen)
-        
-        
-        Alamofire.request(.GET, url, parameters: nil, encoding: .JSON, headers: header).responseArray(completionHandler: { (response: Response<[Host],NSError>) in
-        
-            
-            
-            self.hostsArray = NSMutableArray()
-            
-            if let hosts = response.result.value
-            {
-                for host in hosts
-                {
-                    self.hostsArray?.addObject(host)
-                }
-            }
-            
-            loadingview.hideLoadingView()
-            self.load = true
-            self.table.reloadData()
-        
-        })
+        self.configView()
         
         // Do any additional setup after loading the view.
     }
@@ -75,14 +44,13 @@ class BackupViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         
-        if !load
-        {
+        if self.hostsArray == nil{
             return 0
         }
-        else
-        {
-            return (hostsArray?.count)!
+        else{
+            return self.hostsArray!.count
         }
     }
     
@@ -90,7 +58,7 @@ class BackupViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         let cell = tableView.dequeueReusableCellWithIdentifier("hostCell") as! HostTableViewCell
         
-        cell.hostName.text = (hostsArray![indexPath.row] as! Host).nome
+        cell.hostName.text = (hostsArray![indexPath.row] ).nome
         
         return cell
     }
@@ -99,12 +67,47 @@ class BackupViewController: UIViewController,UITableViewDelegate,UITableViewData
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let operationsViewController = storyboard?.instantiateViewControllerWithIdentifier("operationsViewController") as! OperationsViewController
-        operationsViewController.host = hostsArray![indexPath.row] as? Host
+        operationsViewController.host = hostsArray![indexPath.row]
         operationsViewController.hidesBottomBarWhenPushed = true
         
         self.navigationController?.pushViewController(operationsViewController, animated: true)
         
     }
+    
+    private func configView(){
+        self.table.registerNib(UINib(nibName: "HostTableViewCell",bundle: nil), forCellReuseIdentifier: "hostCell")
+        self.view.backgroundColor = Cores.appBackgroundColor
+        self.loadHosts()
+    }
+    
+
+    private func loadHosts(){
+        
+        let loading = ALLoadingView()
+        let alert = FCAlertView()
+    
+        loading.showLoadingViewOfType(.Default, windowMode: .Fullscreen)
+        
+        
+        Request.getHosts({ (response) -> Void in
+
+            loading.hideLoadingView({
+                
+                self.hostsArray = response as? [Host]
+                self.table.reloadData()
+            })
+            
+            }, failure: {(error) -> Void in
+                
+                loading.hideLoadingView({
+                    
+                    alert.makeAlertTypeCaution()
+                    alert.showAlertWithTitle("Atenção", withSubtitle: "Erro ao carregar os hosts", withCustomImage: nil, withDoneButtonTitle: "Ok", andButtons: nil)
+            })
+                
+        })
+    }
+    
 
     /*
     // MARK: - Navigation

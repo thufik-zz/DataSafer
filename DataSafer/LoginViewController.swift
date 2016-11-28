@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        self.configLayout()
         
         
         // Do any additional setup after loading the view.
@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
     @IBAction func login(sender: UIButton) {
     
         if let login = txtLogin.text, let pass = txtPass.text{
-            GetUser.Login(login, pass: pass)
+            loadUser(login, pass: pass)
         }else{
             //funcao para preencher os campos
         }
@@ -43,6 +43,23 @@ class LoginViewController: UIViewController {
         
     
     }
+    
+    func loadUser(user : String, pass : String){
+        
+        Request.getToken(user, pass: pass, success: { (teste) -> Void in
+            
+                AppDelegate.token.user = teste as? User
+            
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let menu = storyboard.instantiateViewControllerWithIdentifier("menu")
+                (UIApplication.sharedApplication().delegate as! AppDelegate).window?.rootViewController = menu
+                
+            
+            }, failure: {_ in })
+        
+    }
+    
+    
     
     func configLayout()
     {

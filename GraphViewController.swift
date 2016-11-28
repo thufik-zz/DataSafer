@@ -23,8 +23,7 @@ class GraphViewController: UIViewController {
         super.viewDidLoad()
       
         
-        self.ConfigLabels()
-        self.configGraph()
+        self.configView()
         // Do any additional setup after loading the view.
     }
 
@@ -33,7 +32,14 @@ class GraphViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func ConfigLabels()
+    private func configView(){
+        self.ConfigLabels()
+        self.configGraph()
+        self.view.backgroundColor = Cores.appBackgroundColor
+    }
+    
+    
+    private func ConfigLabels()
     {
         lblExecutado.backgroundColor = Cores.executado
         lblExecutando.backgroundColor = Cores.executando
@@ -43,37 +49,37 @@ class GraphViewController: UIViewController {
         lblRestaurando.backgroundColor = Cores.restaurando
     }
     
-    func configGraph()
+    private func configGraph()
     {
         let dictionarie = [
             [
                 "name" : "Executado",
-                "value" : 200,
+                "value" : AppDelegate.token.user!.statusBackups!.executado!,
                 "color" : Cores.executado
             ],
             [
                 "name" : "Falha",
-                "value" : 70,
+                "value" : AppDelegate.token.user!.statusBackups!.falha!,
                 "color" : Cores.falha
             ],
             [
                 "name" : "Agendado",
-                "value" : 50,
+                "value" : AppDelegate.token.user!.statusBackups!.agendado!,
                 "color" : Cores.agendado
             ],
             [
                 "name" : "Executando",
-                "value" : 100,
+                "value" : AppDelegate.token.user!.statusBackups!.executando!,
                 "color" : Cores.executando
             ],
             [
                 "name" : "Restaurado",
-                "value" : 30,
+                "value" : AppDelegate.token.user!.statusBackups!.restaurado!,
                 "color" : Cores.restaurado
             ],
             [
                 "name" : "Restaurando",
-                "value" : 30,
+                "value" : AppDelegate.token.user!.statusBackups!.restaurando!,
                 "color" : Cores.restaurando
             ]
         ]

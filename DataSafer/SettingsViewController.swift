@@ -18,44 +18,8 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.configView()
         
-        let url = NSMutableURLRequest(URL: NSURL(string: "http://senai.datasafer.com.br/gerenciamento/usuario")!)
-        
-        let header = ["authorization" : AppDelegate.token.token,"content-type" : "application/json"]
-        
-        
-        self.view.backgroundColor = UIColor.init(red: 240.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
-        
-        var x = MSSimpleGauge(frame: CGRect(x: 30, y: 370, width: 250, height: 125))
-        
-        x.backgroundArcFillColor = UIColor.redColor()
-        x.fillArcFillColor = UIColor.greenColor()
-        x.fillArcStrokeColor = UIColor.purpleColor()
-    
-        x.backgroundColor = Cores.appBackgroundColor
-        
-        self.view.addSubview(x)
-        
-        x.setValue(50.0, animated: true)
-        x.maxValue = 100.0
-        x.minValue = 0.0
-        //x.setValue(50.0, forKey: "valor", animated: true)
-        
-        Alamofire.request(.GET, url, parameters: nil, encoding: .JSON, headers: header).responseObject(completionHandler: { (response: Response<User,NSError> ) in
-            
-            if let responseData = response.result.value
-            {
-                
-                print(response.response.debugDescription)
-                self.lblName.text = responseData.name!
-                self.lblMail.text = responseData.mail!
-            }
-            else
-            {
-                print(response.response.debugDescription)
-            }
-            
-        })
 
         // Do any additional setup after loading the view.
     }
@@ -65,7 +29,36 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    private func configView(){
+        
+        self.lblName.text = AppDelegate.token.user?.name!
+        self.lblMail.text = AppDelegate.token.user?.mail!
+        self.view.backgroundColor = Cores.appBackgroundColor
+        self.view.addSubview(self.Graph())
+    }
+    
+    private func Graph() -> MSSimpleGauge{
+        
+        let graph = MSSimpleGauge(frame: CGRect(x: 30, y: 370, width: 250, height: 125))
+        
+        graph.backgroundArcFillColor = UIColor.redColor()
+        graph.fillArcFillColor = UIColor.greenColor()
+        graph.fillArcStrokeColor = UIColor.purpleColor()
+        graph.backgroundColor = Cores.appBackgroundColor
 
+        let armazenamento_ocupado = AppDelegate.token.user!.armazenamentoOcupado! / 1000000
+        
+        let armazenamento = AppDelegate.token.user!.armazenamento! / 10000
+        graph.maxValue = Float(armazenamento)
+        graph.minValue = 0.0
+        
+        graph.setValue(Float(armazenamento_ocupado), animated: false)
+        
+        return graph
+    }
+    
+    
     /*
     // MARK: - Navigation
 

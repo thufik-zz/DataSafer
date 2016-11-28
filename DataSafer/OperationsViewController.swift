@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import FCAlertView
+import ALLoadingView
 
 
 class OperationsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -16,7 +17,7 @@ class OperationsViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var table: UITableView!
     var host : Host?
-    var operations : NSMutableArray?
+    var operations : [Operation]?
     
     
     
@@ -24,9 +25,7 @@ class OperationsViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         
         
-        self.table.registerNib(UINib(nibName: "OperationTableViewCell",bundle: nil), forCellReuseIdentifier: "operationCell")
-        
-        self.teste()
+        self.configView()
 
         // Do any additional setup after loading the view.
     }
@@ -62,20 +61,25 @@ class OperationsViewController: UIViewController, UITableViewDataSource, UITable
         
         let cell = self.table.dequeueReusableCellWithIdentifier("operationCell") as! OperationTableViewCell
         
-        cell.lblName.text = (self.operations![indexPath.row] as! Operation).nome!
+        cell.lblName.text = (self.operations![indexPath.row]).nome!
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        self.showAlert(operations![indexPath.row])
+        
+    }
+    
+    private func showAlert(operation : Operation){
         
         let dictionary =
-        [
-            "data" : (operations![indexPath.row] as! Operation).ultimaOperacao!.data!,
-            "status" : (operations![indexPath.row] as! Operation).ultimaOperacao!.status!,
-            "tamanho" : (operations![indexPath.row] as! Operation).ultimaOperacao!.tamanho!
-        
+            [
+                "data" : operation.ultimaOperacao!.data!,
+                "status" : operation.ultimaOperacao!.status!,
+                "tamanho" : operation.ultimaOperacao!.tamanho!
+                
         ]
         
         let mensagem = "data = \(dictionary.valueForKey("data")!) \n status = \(dictionary.valueForKey("status")!) \n tamanho = \(dictionary.valueForKey("tamanho")!)"
@@ -84,41 +88,36 @@ class OperationsViewController: UIViewController, UITableViewDataSource, UITable
         alert.showAlertWithTitle("Informações", withSubtitle: mensagem , withCustomImage: nil, withDoneButtonTitle: "Ok", andButtons: nil)
     }
     
-
-    func teste()
-    {
-        let url = NSMutableURLRequest(URL: NSURL(string: "http://senai.datasafer.com.br/gerenciamento/estacao/backups")!)
-        
-        let header =
-    [
-                "authorization" : AppDelegate.token.token,
-                "content-type" : "application/json",
-                "estacao" : host!.nome!
-        ]
-        
-        Alamofire.request(.GET, url, parameters: nil, encoding: .JSON, headers: header).responseArray(completionHandler: { (response : Response<[Operation],NSError>) in
-            
-            //self.operations = NSMutableArray()
-            
-            if let op = response.result.value{
-                self.operations = NSMutableArray(array: op)
-                print(self.operations!)
-            }
-            else{
-                print(response.debugDescription)
-            }
-            
-            
-            self.table.reloadData()
-            
-            
-            
-            
-        })
-
-        
+    func configView(){
+        self.table.registerNib(UINib(nibName: "OperationTableViewCell",bundle: nil), forCellReuseIdentifier: "operationCell")
+        self.view.backgroundColor = Cores.appBackgroundColor
+        self.loadBackups()
     }
     
+    func loadBackups(){
+    
+        let loading = ALLoadingView()
+        let alert = FCAlertView()
+        loading.showLoadingViewOfType(.Default, windowMode: .Fullscreen)
+        
+        Request.getBackups(self.host!, success: { (response) -> Void in
+            
+            loading.hideLoadingView({
+            
+                self.operations = response as? [Operation]
+                self.table.reloadData()
+            
+            })
+            }, failure: { (error) -> Void in
+        
+                loading.hideLoadingView({
+                
+                    alert.makeAlertTypeCaution()
+                    alert.showAlertWithTitle("Atenção", withSubtitle: "Erro ao carregar as operações", withCustomImage: nil, withDoneButtonTitle: "Ok", andButtons: nil)
+            })
+        })
+    }
+        
     
     
     /*

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		283227EBD06B32EB8AD99C44 /* Pods_DataSafer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38272591045EEB875A056EA3 /* Pods_DataSafer.framework */; };
-		B50BC8A11DBBB361007798E0 /* GetUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50BC8A01DBBB361007798E0 /* GetUser.swift */; };
+		B50BC8A11DBBB361007798E0 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50BC8A01DBBB361007798E0 /* Request.swift */; };
 		B58EE9ED1DD77902006F6CF5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58EE9EC1DD77902006F6CF5 /* SettingsViewController.swift */; };
 		B58EE9EF1DD77B40006F6CF5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58EE9EE1DD77B40006F6CF5 /* User.swift */; };
 		B5962B5A1DE9F4C0006850E2 /* Cores.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5962B591DE9F4C0006850E2 /* Cores.swift */; };
@@ -23,7 +23,6 @@
 		B5AD401B1D843D41002B3F27 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AD401A1D843D41002B3F27 /* LoginViewController.swift */; };
 		B5AD401F1D844DBF002B3F27 /* BackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AD401E1D844DBF002B3F27 /* BackupViewController.swift */; };
 		B5F397251DC4E11C00254AB8 /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F397241DC4E11C00254AB8 /* Host.swift */; };
-		B5F397271DC5023400254AB8 /* GetHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F397261DC5023300254AB8 /* GetHost.swift */; };
 		B5FC436F1D9FE71800B63CCF /* HostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FC436D1D9FE71800B63CCF /* HostTableViewCell.swift */; };
 		B5FC43701D9FE71800B63CCF /* HostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5FC436E1D9FE71800B63CCF /* HostTableViewCell.xib */; };
 		B5FC43721D9FF54800B63CCF /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FC43711D9FF54800B63CCF /* GraphViewController.swift */; };
@@ -32,7 +31,7 @@
 /* Begin PBXFileReference section */
 		38272591045EEB875A056EA3 /* Pods_DataSafer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataSafer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90EB99C0715F43A4354C1647 /* Pods-DataSafer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataSafer.release.xcconfig"; path = "Pods/Target Support Files/Pods-DataSafer/Pods-DataSafer.release.xcconfig"; sourceTree = "<group>"; };
-		B50BC8A01DBBB361007798E0 /* GetUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUser.swift; sourceTree = "<group>"; };
+		B50BC8A01DBBB361007798E0 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		B58EE9EC1DD77902006F6CF5 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B58EE9EE1DD77B40006F6CF5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B58EE9F01DD7A16E006F6CF5 /* DataSafer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DataSafer.entitlements; sourceTree = "<group>"; };
@@ -50,7 +49,6 @@
 		B5AD401A1D843D41002B3F27 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B5AD401E1D844DBF002B3F27 /* BackupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupViewController.swift; sourceTree = "<group>"; };
 		B5F397241DC4E11C00254AB8 /* Host.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
-		B5F397261DC5023300254AB8 /* GetHost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetHost.swift; sourceTree = "<group>"; };
 		B5FC436D1D9FE71800B63CCF /* HostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HostTableViewCell.swift; path = ../HostTableViewCell.swift; sourceTree = "<group>"; };
 		B5FC436E1D9FE71800B63CCF /* HostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HostTableViewCell.xib; path = ../HostTableViewCell.xib; sourceTree = "<group>"; };
 		B5FC43711D9FF54800B63CCF /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphViewController.swift; path = ../GraphViewController.swift; sourceTree = "<group>"; };
@@ -108,8 +106,7 @@
 		B50BC89F1DBBA8B6007798E0 /* HTTPRequest */ = {
 			isa = PBXGroup;
 			children = (
-				B50BC8A01DBBB361007798E0 /* GetUser.swift */,
-				B5F397261DC5023300254AB8 /* GetHost.swift */,
+				B50BC8A01DBBB361007798E0 /* Request.swift */,
 			);
 			name = HTTPRequest;
 			path = ..;
@@ -128,11 +125,11 @@
 		B52D42A71DB2AEB900AA2E6B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B5AD401E1D844DBF002B3F27 /* BackupViewController.swift */,
 				B5AD401A1D843D41002B3F27 /* LoginViewController.swift */,
+				B5AD401E1D844DBF002B3F27 /* BackupViewController.swift */,
+				B5962B5B1DEA1045006850E2 /* OperationsViewController.swift */,
 				B5FC43711D9FF54800B63CCF /* GraphViewController.swift */,
 				B58EE9EC1DD77902006F6CF5 /* SettingsViewController.swift */,
-				B5962B5B1DEA1045006850E2 /* OperationsViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -167,10 +164,10 @@
 			isa = PBXGroup;
 			children = (
 				B58EE9F01DD7A16E006F6CF5 /* DataSafer.entitlements */,
+				B50BC89D1DBBA85A007798E0 /* AppDelegate */,
 				B5962B581DE9F48B006850E2 /* Aparência */,
 				B50BC8A21DBBD782007798E0 /* Model */,
 				B50BC89F1DBBA8B6007798E0 /* HTTPRequest */,
-				B50BC89D1DBBA85A007798E0 /* AppDelegate */,
 				B52D42A71DB2AEB900AA2E6B /* ViewController */,
 				B50BC89E1DBBA880007798E0 /* Cell */,
 				B5AD400F1D8439CF002B3F27 /* Assets.xcassets */,
@@ -322,9 +319,8 @@
 				B5F397251DC4E11C00254AB8 /* Host.swift in Sources */,
 				B5962B5A1DE9F4C0006850E2 /* Cores.swift in Sources */,
 				B5AD40091D8439CF002B3F27 /* AppDelegate.swift in Sources */,
-				B50BC8A11DBBB361007798E0 /* GetUser.swift in Sources */,
+				B50BC8A11DBBB361007798E0 /* Request.swift in Sources */,
 				B5AD401F1D844DBF002B3F27 /* BackupViewController.swift in Sources */,
-				B5F397271DC5023400254AB8 /* GetHost.swift in Sources */,
 				B5FC436F1D9FE71800B63CCF /* HostTableViewCell.swift in Sources */,
 				B5962B5E1DEA17FB006850E2 /* Operation.swift in Sources */,
 				B58EE9EF1DD77B40006F6CF5 /* User.swift in Sources */,
