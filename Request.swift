@@ -10,13 +10,18 @@ import UIKit
 import Alamofire
 import FCAlertView
 import ALLoadingView
+import ObjectMapper
 
 class Request: NSObject {
 
     
+    private static var endPoint = "http://senai.datasafer.com.br/"
+    
+    
     static func getHosts(success: (response: AnyObject!) -> Void, failure: (error: NSError?) -> Void){
      
-        let url = NSMutableURLRequest(URL: NSURL(string: "http://senai.datasafer.com.br/gerenciamento/usuario/estacoes")!)
+        let url = NSMutableURLRequest(URL: NSURL(string: endPoint + "gerenciamento/usuario/estacoes")!)
+        
         
         let header = ["Authorization" : AppDelegate.token.token, "content-type" : "application/json"]
         
@@ -40,10 +45,10 @@ class Request: NSObject {
     static func getBackups(host: Host, success : (response : AnyObject!) -> Void, failure : (error : NSError?) -> Void){
         
         
-        let url = NSMutableURLRequest(URL: NSURL(string: "http://senai.datasafer.com.br/gerenciamento/estacao/backups")!)
+        let url = NSMutableURLRequest(URL: NSURL(string: endPoint + "gerenciamento/estacao/backups")!)
         
         let header =
-            [
+        [
                 "authorization" : AppDelegate.token.token,
                 "content-type" : "application/json",
                 "estacao" : host.nome!
@@ -64,9 +69,9 @@ class Request: NSObject {
         
     }
     
-    static func getToken(user : String, pass: String, success : (response : AnyObject) -> Void, failure : (error : NSError?) -> Void){
+    static func getUserAndToken(user : String, pass: String, success : (response : AnyObject) -> Void, failure : (error : NSError?) -> Void){
 
-        let url = NSMutableURLRequest(URL: NSURL(string: "http://senai.datasafer.com.br/gerenciamento/login")!)
+        let url = NSMutableURLRequest(URL: NSURL(string: endPoint + "gerenciamento/login")!)
         
         let parameters = [
             "login" : user,
@@ -74,11 +79,11 @@ class Request: NSObject {
             "expira" : false
         ]
         
+        
         let header = [
             "content-type" : "application/json",
             "accept" : "application/json"
         ]
-        
         
         Alamofire.request(.POST, url, parameters: parameters as? [String : AnyObject], encoding: .JSON, headers: header).responseJSON(completionHandler: { (response) -> Void in
             
@@ -97,7 +102,6 @@ class Request: NSObject {
                 break
                 case .Failure(let error) :
                     failure(error: error)
-                
             }
             
         })
@@ -107,7 +111,7 @@ class Request: NSObject {
     static func getUser(token: String,success : (response : AnyObject) -> Void, failure : (error : NSError?) -> Void)
     {
         
-        let url = NSMutableURLRequest(URL: NSURL(string: "http://senai.datasafer.com.br/gerenciamento/usuario")!)
+        let url = NSMutableURLRequest(URL: NSURL(string: endPoint + "gerenciamento/usuario")!)
         
         let header = [
             "Authorization" : token,
@@ -128,81 +132,4 @@ class Request: NSObject {
     }
     
     
-//    static func Login(user:String, pass:String){
-//        
-//        let url = NSMutableURLRequest(URL: NSURL(string: "http://senai.datasafer.com.br/gerenciamento/login")!)
-//
-//        let parameters = [
-//                "login" : user,
-//                "senha" : pass,
-//                "expira" : false
-//        ]
-//        
-//        let header = [
-//            "content-type" : "application/json",
-//            "accept" : "application/json"
-//        ]
-//        
-//        
-//        //let loadingview = ALLoadingView()
-//        //let alert = FCAlertView()
-//        //loadingview.showLoadingViewOfType(.Default, windowMode: .Fullscreen)
-//        
-//        Alamofire.request(.POST, url, parameters: parameters as? [String : AnyObject], encoding: .JSON, headers: header).responseJSON(completionHandler: { (response) -> Void in
-//        
-//            if let JsonReturn = response.result.value as? [String : AnyObject]
-//            {
-//                
-//                if JsonReturn["erro"] != nil
-//                {
-//                    loadingview.hideLoadingView()
-//                    alert.makeAlertTypeCaution()
-//                    alert.showAlertWithTitle("Atenção", withSubtitle: "Usuário ou senha incorretos", withCustomImage: nil, withDoneButtonTitle: "Ok", andButtons: nil)
-//                }
-//                else
-//                {
-//                    loadingview.hideLoadingView()
-//                    AppDelegate.token.token = JsonReturn["token"] as! String
-//                    print("token = \(AppDelegate.token.token)")
-//                    
-//                    
-//                    
-//                    let url = NSMutableURLRequest(URL: NSURL(string: "http://senai.datasafer.com.br/gerenciamento/usuario")!)
-//                    
-//                    let header = ["authorization" : AppDelegate.token.token,"content-type" : "application/json"]
-//                    
-//                    
-//                    Alamofire.request(.GET, url, parameters: nil, encoding: .JSON, headers: header).responseObject(completionHandler: { (response: Response<User,NSError> ) in
-//                        
-//                        if let responseData = response.result.value
-//                        {
-//                            
-//                            AppDelegate.token.user = responseData
-//                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                            let menu = storyboard.instantiateViewControllerWithIdentifier("menu")
-//                            (UIApplication.sharedApplication().delegate as! AppDelegate).window?.rootViewController = menu
-//                            
-//                        }
-//                        else
-//                        {
-//                            print(response.response.debugDescription)
-//                        }
-//                        
-//                    })
-//                }
-//            }
-//            else
-//            {
-//                loadingview.hideLoadingView()
-//                alert.makeAlertTypeCaution()
-//                alert.showAlertWithTitle("Atenção", withSubtitle: "Houve um erro, tente novamente mais tarde", withCustomImage: nil, withDoneButtonTitle: "Ok", andButtons: nil)
-//            }
-//        
-//        })
-//        
-//
-//        
-//    }
-    
-
 }

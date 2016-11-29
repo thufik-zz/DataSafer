@@ -76,7 +76,7 @@ class BackupViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     private func configView(){
         self.table.registerNib(UINib(nibName: "HostTableViewCell",bundle: nil), forCellReuseIdentifier: "hostCell")
-        self.view.backgroundColor = Cores.appBackgroundColor
+        self.table.backgroundColor = Cores.appBackgroundColor
         self.loadHosts()
     }
     

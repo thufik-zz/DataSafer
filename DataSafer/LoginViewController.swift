@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FCAlertView
 
 
 class LoginViewController: UIViewController {
@@ -32,33 +33,44 @@ class LoginViewController: UIViewController {
     
     @IBAction func login(sender: UIButton) {
     
-        if let login = txtLogin.text, let pass = txtPass.text{
-            loadUser(login, pass: pass)
-        }else{
-            //funcao para preencher os campos
-        }
-        
-        //GetUser.Login(self.txtLogin.text!, pass: self.txtPass.text!)
-        //GetUser.Login(txtLogin.text!, pass: txtPass.text!)
-        
+        self.validateFields()
     
     }
     
     func loadUser(user : String, pass : String){
         
-        Request.getToken(user, pass: pass, success: { (teste) -> Void in
+        Request.getUserAndToken(user, pass: pass, success: { (userValue) -> Void in
             
-                AppDelegate.token.user = teste as? User
+                AppDelegate.token.user = userValue as? User
             
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let menu = storyboard.instantiateViewControllerWithIdentifier("menu")
                 (UIApplication.sharedApplication().delegate as! AppDelegate).window?.rootViewController = menu
                 
-            
-            }, failure: {_ in })
+            }, failure: { (error : NSError?) -> Void in
+        
+                let alert = FCAlertView()
+                alert.makeAlertTypeWarning()
+                alert.showAlertWithTitle("Atenção", withSubtitle: "Erro ao logar", withCustomImage: nil, withDoneButtonTitle: "Ok", andButtons: nil)
+        })
         
     }
     
+    func validateFields()
+    {
+        if (self.txtLogin.text != "" && self.txtPass.text != ""){
+            loadUser(txtLogin.text!, pass: txtPass.text!)
+        }else{
+            let alert = FCAlertView()
+            alert.makeAlertTypeWarning()
+            alert.showAlertWithTitle("Atenção", withSubtitle: "Preencha todos os campos", withCustomImage: nil, withDoneButtonTitle: "Ok", andButtons: nil)
+            if self.txtLogin.text == ""{
+                self.txtLogin.becomeFirstResponder()
+            }else{
+                self.txtPass.becomeFirstResponder()
+            }
+        }
+    }
     
     
     func configLayout()

@@ -90,7 +90,7 @@ class OperationsViewController: UIViewController, UITableViewDataSource, UITable
     
     func configView(){
         self.table.registerNib(UINib(nibName: "OperationTableViewCell",bundle: nil), forCellReuseIdentifier: "operationCell")
-        self.view.backgroundColor = Cores.appBackgroundColor
+        self.table.backgroundColor = Cores.appBackgroundColor
         self.loadBackups()
     }
     
