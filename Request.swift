@@ -91,6 +91,8 @@ class Request: NSObject {
                 case .Success :
                     
                     AppDelegate.token.token = response.result.value!["token"] as! String
+                    self.putTokenIOS()
+                    
                     self.getUser(response.result.value!["token"] as! String, success: { (sucesso) -> Void in
                         
                         success(response: sucesso)
@@ -130,6 +132,23 @@ class Request: NSObject {
             
         })
     }
+    
+    static func putTokenIOS()
+    {
+        let url = NSMutableURLRequest(URL: NSURL(string: endPoint + "gerenciamento/notificacoes")!)
+        let header = [
+            "Authorization" : AppDelegate.token.token,
+            "content-type" : "application/json"
+        ]
+        
+        let parameters = [
+            "token" : AppDelegate.token.iosToken,
+            "tipo" : "DISPOSITIVO_IOS"
+        ]
+        
+        Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON, headers: header)
+    }
+    
     
     
 }

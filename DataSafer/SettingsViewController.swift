@@ -8,13 +8,15 @@
 
 import UIKit
 import Alamofire
-import MSSimpleGauge
 
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblMail: UILabel!
+    @IBOutlet weak var lblAvailable: UILabel!
  
+    @IBOutlet weak var lblUsed: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,28 +36,17 @@ class SettingsViewController: UIViewController {
         
         self.lblName.text = AppDelegate.token.user?.name!
         self.lblMail.text = AppDelegate.token.user?.mail!
+        self.lblAvailable.text = "\(calculateGigas()) GB"
+        self.lblUsed.text = "\(calculateGigas()) GB"
         self.view.backgroundColor = Cores.appBackgroundColor
-        self.view.addSubview(self.Graph())
+        
     }
     
-    private func Graph() -> MSSimpleGauge{
+    
+    private func calculateGigas() -> Float
         
-        let graph = MSSimpleGauge(frame: CGRect(x: 30, y: 370, width: 250, height: 125))
-        
-        graph.backgroundArcFillColor = UIColor.redColor()
-        graph.fillArcFillColor = UIColor.greenColor()
-        graph.fillArcStrokeColor = UIColor.purpleColor()
-        graph.backgroundColor = Cores.appBackgroundColor
-
-        let armazenamento_ocupado = AppDelegate.token.user!.armazenamentoOcupado! / 1000000
-        
-        let armazenamento = AppDelegate.token.user!.armazenamento! / 10000
-        graph.maxValue = Float(armazenamento)
-        graph.minValue = 0.0
-        
-        graph.setValue(Float(armazenamento_ocupado), animated: false)
-        
-        return graph
+    {
+        return  Float( (Float(AppDelegate.token.user!.armazenamento!)) / 1024.0 / 1024.0)
     }
     
     

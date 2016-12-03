@@ -8,6 +8,7 @@
 
 import UIKit
 import FCAlertView
+import ALLoadingView
 
 
 class LoginViewController: UIViewController {
@@ -37,24 +38,6 @@ class LoginViewController: UIViewController {
     
     }
     
-    func loadUser(user : String, pass : String){
-        
-        Request.getUserAndToken(user, pass: pass, success: { (userValue) -> Void in
-            
-                AppDelegate.token.user = userValue as? User
-            
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let menu = storyboard.instantiateViewControllerWithIdentifier("menu")
-                (UIApplication.sharedApplication().delegate as! AppDelegate).window?.rootViewController = menu
-                
-            }, failure: { (error : NSError?) -> Void in
-        
-                let alert = FCAlertView()
-                alert.makeAlertTypeWarning()
-                alert.showAlertWithTitle("Atenção", withSubtitle: "Erro ao logar", withCustomImage: nil, withDoneButtonTitle: "Ok", andButtons: nil)
-        })
-        
-    }
     
     func validateFields()
     {
@@ -70,6 +53,31 @@ class LoginViewController: UIViewController {
                 self.txtPass.becomeFirstResponder()
             }
         }
+    }
+    
+    
+    func loadUser(user : String, pass : String){
+        
+        let loading = ALLoadingView()
+        loading.showLoadingViewOfType(.Default, windowMode: .Fullscreen)
+        
+        Request.getUserAndToken(user, pass: pass, success: { (userValue) -> Void in
+            
+                AppDelegate.token.user = userValue as? User
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let menu = storyboard.instantiateViewControllerWithIdentifier("menu")
+                loading.hideLoadingView({
+                    (UIApplication.sharedApplication().delegate as! AppDelegate).window?.rootViewController = menu
+                })
+            }, failure: { (error : NSError?) -> Void in
+        
+                let alert = FCAlertView()
+                loading.hideLoadingView({
+                    alert.makeAlertTypeWarning()
+                    alert.showAlertWithTitle("Atenção", withSubtitle: "Erro ao logar", withCustomImage: nil, withDoneButtonTitle: "Ok", andButtons: nil)
+                })
+        })
+        
     }
     
     

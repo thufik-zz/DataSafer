@@ -58,7 +58,22 @@ class BackupViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         let cell = tableView.dequeueReusableCellWithIdentifier("hostCell") as! HostTableViewCell
         
+        if (((hostsArray![indexPath.row].nome)!.containsString("PC")))
+        {
+            cell.computerImage.image = UIImage.init(named: "computer")
+        }
+        else if (((hostsArray![indexPath.row].nome)!.containsString("Notebook")))
+        {
+            cell.computerImage.image = UIImage.init(named: "laptop")
+        }
+        else if (((hostsArray![indexPath.row].nome)!.containsString("Desktop")))
+        {
+            cell.computerImage.image = UIImage.init(named: "workstation")
+        }
+        
+        cell.selectionStyle = .None
         cell.hostName.text = (hostsArray![indexPath.row] ).nome
+        cell.backgroundColor = Cores.appBackgroundColor
         
         return cell
     }

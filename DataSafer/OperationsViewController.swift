@@ -61,7 +61,26 @@ class OperationsViewController: UIViewController, UITableViewDataSource, UITable
         
         let cell = self.table.dequeueReusableCellWithIdentifier("operationCell") as! OperationTableViewCell
         
+        switch operations![indexPath.row].ultimaOperacao!.status! {
+        case "EXECUTADO":
+            cell.status.image = UIImage(named: "executado")
+        case "FALHA" :
+            cell.status.image = UIImage(named: "falha")
+        case "AGENDADO" :
+            cell.status.image = UIImage(named: "agendado")
+        case "RESTAURADO" :
+            cell.status.image = UIImage(named: "restaurado")
+        case "RESTAURANDO" :
+            cell.status.image = UIImage(named: "restaurando")
+        case "EXECUTANDO" :
+            cell.status.image = UIImage(named: "executando")
+        default:
+            break
+        }
+        
+        cell.selectionStyle = .None
         cell.lblName.text = (self.operations![indexPath.row]).nome!
+        cell.backgroundColor = Cores.appBackgroundColor
         
         return cell
     }

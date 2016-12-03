@@ -13,11 +13,15 @@ class GraphViewController: UIViewController {
 
     
     @IBOutlet weak var lblExecutado: UILabel!
-    @IBOutlet weak var lblFalha: UILabel!
-    @IBOutlet weak var lblAgendado: UILabel!
+   
     @IBOutlet weak var lblExecutando: UILabel!
+    
+    @IBOutlet weak var lblAgendado: UILabel!
     @IBOutlet weak var lblRestaurando: UILabel!
     @IBOutlet weak var lblRestaurado: UILabel!
+    
+    @IBOutlet weak var lblFalha: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,12 +45,37 @@ class GraphViewController: UIViewController {
     
     private func ConfigLabels()
     {
+        let status = AppDelegate.token.user!.statusBackups!
+        let total = (status.executado! + status.falha! + status.agendado! + status.executando! + status.restaurado! + status.restaurando!)
+        
+        lblExecutado.clipsToBounds =  true
+        lblExecutado.layer.cornerRadius = 10
+        lblExecutando.clipsToBounds =  true
+        lblExecutando.layer.cornerRadius = 10
+        lblAgendado.clipsToBounds =  true
+        lblAgendado.layer.cornerRadius = 10
+        lblFalha.clipsToBounds =  true
+        lblFalha.layer.cornerRadius = 10
+        lblRestaurado.clipsToBounds =  true
+        lblRestaurado.layer.cornerRadius = 10
+        lblRestaurando.clipsToBounds =  true
+        lblRestaurando.layer.cornerRadius = 10
+        
         lblExecutado.backgroundColor = Cores.executado
         lblExecutando.backgroundColor = Cores.executando
         lblAgendado.backgroundColor = Cores.agendado
         lblFalha.backgroundColor = Cores.falha
         lblRestaurado.backgroundColor = Cores.restaurado
         lblRestaurando.backgroundColor = Cores.restaurando
+        
+        
+        lblExecutado.text = "10%"
+        lblExecutando.text = "20%"
+        lblAgendado.text = "30%"
+        lblFalha.text = "15%"
+        lblRestaurado.text = "5%"
+        lblRestaurando.text = "20%"
+        
     }
     
     private func configGraph()

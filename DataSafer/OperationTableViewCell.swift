@@ -12,6 +12,7 @@ class OperationTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var status: UIImageView!
 
     
     override func awakeFromNib() {

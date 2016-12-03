@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     struct token {
         static var token = ""
         static var user : User?
+        static var iosToken = ""
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
@@ -30,6 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+    
+        var token = NSString(format: "%@",deviceToken)
+        token = token.stringByReplacingOccurrencesOfString("<", withString: "")
+        token  = token.stringByReplacingOccurrencesOfString(" ", withString: "")
+        token = token.stringByReplacingOccurrencesOfString(">", withString: "")
+        AppDelegate.token.iosToken = token as String
+        
+        print(deviceToken)
     }
     
     

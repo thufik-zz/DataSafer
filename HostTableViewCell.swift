@@ -13,8 +13,9 @@ class HostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var hostName: UILabel!
     @IBOutlet weak var hostIP: UILabel!
-    @IBOutlet weak var backupStatus: UILabel!
-    
+    @IBOutlet weak var backupStatus: UILabel!    
+    @IBOutlet weak var computerImage: UIImageView!
+   
     
     
     override func awakeFromNib() {
