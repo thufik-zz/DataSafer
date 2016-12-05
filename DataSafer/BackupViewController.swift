@@ -58,15 +58,15 @@ class BackupViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         let cell = tableView.dequeueReusableCellWithIdentifier("hostCell") as! HostTableViewCell
         
-        if (((hostsArray![indexPath.row].nome)!.containsString("PC")))
+        if (((hostsArray![indexPath.row].nome)!.containsString("Estacao")))
         {
             cell.computerImage.image = UIImage.init(named: "computer")
         }
-        else if (((hostsArray![indexPath.row].nome)!.containsString("Notebook")))
+        else if (((hostsArray![indexPath.row].nome)!.containsString("Laptop")))
         {
             cell.computerImage.image = UIImage.init(named: "laptop")
         }
-        else if (((hostsArray![indexPath.row].nome)!.containsString("Desktop")))
+        else if (((hostsArray![indexPath.row].nome)!.containsString("Computador")))
         {
             cell.computerImage.image = UIImage.init(named: "workstation")
         }

@@ -45,8 +45,6 @@ class GraphViewController: UIViewController {
     
     private func ConfigLabels()
     {
-        let status = AppDelegate.token.user!.statusBackups!
-        let total = (status.executado! + status.falha! + status.agendado! + status.executando! + status.restaurado! + status.restaurando!)
         
         lblExecutado.clipsToBounds =  true
         lblExecutado.layer.cornerRadius = 10
@@ -68,15 +66,30 @@ class GraphViewController: UIViewController {
         lblRestaurado.backgroundColor = Cores.restaurado
         lblRestaurando.backgroundColor = Cores.restaurando
         
+        let status = AppDelegate.token.user!.statusBackups!
         
-        lblExecutado.text = "10%"
-        lblExecutando.text = "20%"
-        lblAgendado.text = "30%"
-        lblFalha.text = "15%"
-        lblRestaurado.text = "5%"
-        lblRestaurando.text = "20%"
+        
+        lblExecutado.text = percentageValue(status.executado!)
+        lblExecutando.text = percentageValue(status.executando!)
+        lblAgendado.text = percentageValue(status.agendado!)
+        lblFalha.text = percentageValue(status.falha!)
+        lblRestaurado.text = percentageValue(status.restaurado!)
+        lblRestaurando.text = percentageValue(status.restaurando!)
         
     }
+    
+    private func percentageValue(value : Int) -> String
+    {
+        let status = AppDelegate.token.user!.statusBackups!
+        let sum = (status.executado! + status.falha! + status.agendado! + status.executando! + status.restaurado! + status.restaurando!)
+        let floatSum = Float(sum)
+        let newValue = Float(value * 100)
+        let percentage = newValue / floatSum
+        
+        return String(format: "%.1f%", percentage)
+        
+    }
+    
     
     private func configGraph()
     {
