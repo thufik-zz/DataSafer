@@ -27,11 +27,8 @@ class Request: NSObject {
         
         Alamofire.request(.GET, url, parameters: nil, encoding: .JSON, headers: header).responseArray(completionHandler: { (response: Response<[Host],NSError>) in
             
-           
-            print(response.debugDescription)
-            
-            switch response.result{
-                
+            switch response.result {
+        
             case .Success:
                 success(response : response.result.value)
             case .Failure(let error):

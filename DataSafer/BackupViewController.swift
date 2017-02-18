@@ -111,7 +111,6 @@ class BackupViewController: UIViewController,UITableViewDelegate,UITableViewData
                 self.hostsArray = response as? [Host]
                 self.table.reloadData()
             })
-            
             }, failure: {(error) -> Void in
                 
                 loading.hideLoadingView({
